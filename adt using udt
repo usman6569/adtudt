@@ -1,0 +1,37 @@
+Module Module1
+
+    Structure node
+        Dim pointer As Integer
+        Dim data As String
+    End Structure
+    Dim stack(0 To 9) As node
+    Dim FP, TP As Integer
+
+
+    Sub Main()
+        FP = 0
+        TP = -1
+        For x = 0 To 9
+            stack(x).data = ""
+            stack(x).pointer = x + 1
+            If x = 9 Then
+                stack(x).pointer = -1
+            End If
+        Next
+        push("hello")
+        push("heo")
+
+    End Sub
+    Sub push(ByVal data As String)
+        If FP = -1 Then
+            Console.WriteLine("stack is full")
+        Else
+            stack(FP).data = data
+            TP = FP
+            FP = stack(FP).pointer
+
+        End If
+    End Sub
+
+
+End Module
